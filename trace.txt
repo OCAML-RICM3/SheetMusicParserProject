@@ -1,0 +1,266 @@
+$ ledit ocaml
+        Objective Caml version 3.12.1
+
+# #use "main.ml";;
+
+# sheetparser sheet ;;
+
+- : run =
+{clock = 0.;
+ processus =
+  [{automaton = "Default";
+    state = {node = 1; data = {clock = 0.; sound = Nil; soundtrack = []}}};
+   {automaton = "Tempo";
+    state = {node = 1; data = {clock = 0.; sound = Nil; soundtrack = []}}};
+   {automaton = "Default";
+    state = {node = 1; data = {clock = 0.; sound = Nil; soundtrack = []}}};
+   {automaton = "Drum";
+    state = {node = 1; data = {clock = 0.; sound = Nil; soundtrack = []}}};
+   {automaton = "Default";
+    state = {node = 1; data = {clock = 0.; sound = Nil; soundtrack = []}}};
+   {automaton = "Default";
+    state = {node = 1; data = {clock = 0.; sound = Nil; soundtrack = []}}}];
+ sheet =
+  [['R'; 'T'; 'V'; 'D'; 'G'; '|']; [':'; ':'; ':'; ':'; ':'; ' '];
+   [' '; '|'; '|'; '|'; '|'; ' ']; [' '; '1'; ' '; 'b'; ' '; ' '];
+   [' '; '2'; ' '; 'B'; ' '; ' ']; [' '; '3'; ' '; 'b'; ' '; ' '];
+   [' '; '4'; ' '; 'B'; ' '; ' ']; [' '; '5'; ' '; 'b'; ' '; ' ']];
+ soundtracks = []}
+
+# one_step  () ;;
+
+- : run =
+{clock = 0.;
+ processus =
+  [{automaton = "Default";
+    state = {node = 1; data = {clock = 0.; sound = Nil; soundtrack = []}}};
+   {automaton = "Tempo";
+    state = {node = 1; data = {clock = 0.; sound = Nil; soundtrack = []}}};
+   {automaton = "Default";
+    state = {node = 1; data = {clock = 0.; sound = Nil; soundtrack = []}}};
+   {automaton = "Drum";
+    state = {node = 1; data = {clock = 0.; sound = Nil; soundtrack = []}}};
+   {automaton = "Default";
+    state = {node = 1; data = {clock = 0.; sound = Nil; soundtrack = []}}};
+   {automaton = "Default";
+    state = {node = 1; data = {clock = 0.; sound = Nil; soundtrack = []}}}];
+ sheet =
+  [[':'; ':'; ':'; ':'; ':'; ' ']; [' '; '|'; '|'; '|'; '|'; ' '];
+   [' '; '1'; ' '; 'b'; ' '; ' ']; [' '; '2'; ' '; 'B'; ' '; ' '];
+   [' '; '3'; ' '; 'b'; ' '; ' ']; [' '; '4'; ' '; 'B'; ' '; ' '];
+   [' '; '5'; ' '; 'b'; ' '; ' ']];
+ soundtracks = []}
+
+# one_step () ;;
+
+- : run =
+{clock = 0.;
+ processus =
+  [{automaton = "Default";
+    state = {node = 1; data = {clock = 0.; sound = Nil; soundtrack = []}}};
+   {automaton = "Tempo";
+    state = {node = 1; data = {clock = 0.; sound = Nil; soundtrack = []}}};
+   {automaton = "Default";
+    state = {node = 1; data = {clock = 0.; sound = Nil; soundtrack = []}}};
+   {automaton = "Drum";
+    state = {node = 1; data = {clock = 0.; sound = Nil; soundtrack = []}}};
+   {automaton = "Default";
+    state = {node = 1; data = {clock = 0.; sound = Nil; soundtrack = []}}};
+   {automaton = "Default";
+    state = {node = 1; data = {clock = 0.; sound = Nil; soundtrack = []}}}];
+ sheet =
+  [[' '; '|'; '|'; '|'; '|'; ' ']; [' '; '1'; ' '; 'b'; ' '; ' '];
+   [' '; '2'; ' '; 'B'; ' '; ' ']; [' '; '3'; ' '; 'b'; ' '; ' '];
+   [' '; '4'; ' '; 'B'; ' '; ' ']; [' '; '5'; ' '; 'b'; ' '; ' ']];
+ soundtracks = []}
+
+# one_step () ;;
+
+- : run =
+{clock = 0.;
+ processus =
+  [{automaton = "Default";
+    state = {node = 1; data = {clock = 0.; sound = Nil; soundtrack = []}}};
+   {automaton = "Tempo";
+    state = {node = 1; data = {clock = 0.; sound = Nil; soundtrack = []}}};
+   {automaton = "Default";
+    state = {node = 1; data = {clock = 0.; sound = Nil; soundtrack = []}}};
+   {automaton = "Drum";
+    state = {node = 1; data = {clock = 0.; sound = Nil; soundtrack = []}}};
+   {automaton = "Default";
+    state = {node = 1; data = {clock = 0.; sound = Nil; soundtrack = []}}};
+   {automaton = "Default";
+    state = {node = 1; data = {clock = 0.; sound = Nil; soundtrack = []}}}];
+ sheet =
+  [[' '; '1'; ' '; 'b'; ' '; ' ']; [' '; '2'; ' '; 'B'; ' '; ' '];
+   [' '; '3'; ' '; 'b'; ' '; ' ']; [' '; '4'; ' '; 'B'; ' '; ' '];
+   [' '; '5'; ' '; 'b'; ' '; ' ']];
+ soundtracks = []}
+
+# one_step () ;;
+
+- : run =
+{clock = 1.;
+ processus =
+  [{automaton = "Default";
+    state = {node = 1; data = {clock = 1.; sound = Nil; soundtrack = []}}};
+   {automaton = "Tempo";
+    state = {node = 1; data = {clock = 1.; sound = Nil; soundtrack = []}}};
+   {automaton = "Default";
+    state = {node = 1; data = {clock = 1.; sound = Nil; soundtrack = []}}};
+   {automaton = "Drum";
+    state =
+     {node = 1;
+      data = {clock = 1.; sound = Sic (1., ["tchak"]); soundtrack = []}}};
+   {automaton = "Default";
+    state = {node = 1; data = {clock = 1.; sound = Nil; soundtrack = []}}};
+   {automaton = "Default";
+    state = {node = 1; data = {clock = 1.; sound = Nil; soundtrack = []}}}];
+ sheet =
+  [[' '; '2'; ' '; 'B'; ' '; ' ']; [' '; '3'; ' '; 'b'; ' '; ' '];
+   [' '; '4'; ' '; 'B'; ' '; ' ']; [' '; '5'; ' '; 'b'; ' '; ' ']];
+ soundtracks = []}
+
+# one_step () ;;
+
+- : run =
+{clock = 2.;
+ processus =
+  [{automaton = "Default";
+    state = {node = 1; data = {clock = 2.; sound = Nil; soundtrack = []}}};
+   {automaton = "Tempo";
+    state = {node = 1; data = {clock = 2.; sound = Nil; soundtrack = []}}};
+   {automaton = "Default";
+    state = {node = 1; data = {clock = 2.; sound = Nil; soundtrack = []}}};
+   {automaton = "Drum";
+    state =
+     {node = 1;
+      data = {clock = 2.; sound = Nil; soundtrack = [(1., "Poumtchak")]}}};
+   {automaton = "Default";
+    state = {node = 1; data = {clock = 2.; sound = Nil; soundtrack = []}}};
+   {automaton = "Default";
+    state = {node = 1; data = {clock = 2.; sound = Nil; soundtrack = []}}}];
+ sheet =
+  [[' '; '3'; ' '; 'b'; ' '; ' ']; [' '; '4'; ' '; 'B'; ' '; ' '];
+   [' '; '5'; ' '; 'b'; ' '; ' ']];
+ soundtracks = []}
+
+# one_step () ;;
+
+- : run =
+{clock = 3.;
+ processus =
+  [{automaton = "Default";
+    state = {node = 1; data = {clock = 3.; sound = Nil; soundtrack = []}}};
+   {automaton = "Tempo";
+    state = {node = 1; data = {clock = 3.; sound = Nil; soundtrack = []}}};
+   {automaton = "Default";
+    state = {node = 1; data = {clock = 3.; sound = Nil; soundtrack = []}}};
+   {automaton = "Drum";
+    state =
+     {node = 1;
+      data =
+       {clock = 3.; sound = Sic (3., ["tchak"]);
+        soundtrack = [(1., "Poumtchak")]}}};
+   {automaton = "Default";
+    state = {node = 1; data = {clock = 3.; sound = Nil; soundtrack = []}}};
+   {automaton = "Default";
+    state = {node = 1; data = {clock = 3.; sound = Nil; soundtrack = []}}}];
+ sheet = [[' '; '4'; ' '; 'B'; ' '; ' ']; [' '; '5'; ' '; 'b'; ' '; ' ']];
+ soundtracks = []}
+
+# one_step () ;;
+
+- : run =
+{clock = 4.;
+ processus =
+  [{automaton = "Default";
+    state = {node = 1; data = {clock = 4.; sound = Nil; soundtrack = []}}};
+   {automaton = "Tempo";
+    state = {node = 1; data = {clock = 4.; sound = Nil; soundtrack = []}}};
+   {automaton = "Default";
+    state = {node = 1; data = {clock = 4.; sound = Nil; soundtrack = []}}};
+   {automaton = "Drum";
+    state =
+     {node = 1;
+      data =
+       {clock = 4.; sound = Nil;
+        soundtrack = [(3., "Poumtchak"); (1., "Poumtchak")]}}};
+   {automaton = "Default";
+    state = {node = 1; data = {clock = 4.; sound = Nil; soundtrack = []}}};
+   {automaton = "Default";
+    state = {node = 1; data = {clock = 4.; sound = Nil; soundtrack = []}}}];
+ sheet = [[' '; '5'; ' '; 'b'; ' '; ' ']]; soundtracks = []}
+
+# one_step () ;;
+
+- : run =
+{clock = 5.;
+ processus =
+  [{automaton = "Default";
+    state = {node = 1; data = {clock = 5.; sound = Nil; soundtrack = []}}};
+   {automaton = "Tempo";
+    state = {node = 1; data = {clock = 5.; sound = Nil; soundtrack = []}}};
+   {automaton = "Default";
+    state = {node = 1; data = {clock = 5.; sound = Nil; soundtrack = []}}};
+   {automaton = "Drum";
+    state =
+     {node = 1;
+      data =
+       {clock = 5.; sound = Sic (5., ["tchak"]);
+        soundtrack = [(3., "Poumtchak"); (1., "Poumtchak")]}}};
+   {automaton = "Default";
+    state = {node = 1; data = {clock = 5.; sound = Nil; soundtrack = []}}};
+   {automaton = "Default";
+    state = {node = 1; data = {clock = 5.; sound = Nil; soundtrack = []}}}];
+ sheet = []; soundtracks = []}
+
+# one_step () ;;
+
+- : run =
+{clock = 5.;
+ processus =
+  [{automaton = "Default";
+    state = {node = 1; data = {clock = 5.; sound = Nil; soundtrack = []}}};
+   {automaton = "Tempo";
+    state = {node = 1; data = {clock = 5.; sound = Nil; soundtrack = []}}};
+   {automaton = "Default";
+    state = {node = 1; data = {clock = 5.; sound = Nil; soundtrack = []}}};
+   {automaton = "Drum";
+    state =
+     {node = 1;
+      data =
+       {clock = 5.; sound = Sic (5., ["tchak"]);
+        soundtrack = [(3., "Poumtchak"); (1., "Poumtchak")]}}};
+   {automaton = "Default";
+    state = {node = 1; data = {clock = 5.; sound = Nil; soundtrack = []}}};
+   {automaton = "Default";
+    state = {node = 1; data = {clock = 5.; sound = Nil; soundtrack = []}}}];
+ sheet = [];
+ soundtracks =
+  [[]; []; []; [(5., "tchak"); (3., "Poumtchak"); (1., "Poumtchak")]; []; []]}
+
+# one_step () ;;
+
+- : run =
+{clock = 5.;
+ processus =
+  [{automaton = "Default";
+    state = {node = 1; data = {clock = 5.; sound = Nil; soundtrack = []}}};
+   {automaton = "Tempo";
+    state = {node = 1; data = {clock = 5.; sound = Nil; soundtrack = []}}};
+   {automaton = "Default";
+    state = {node = 1; data = {clock = 5.; sound = Nil; soundtrack = []}}};
+   {automaton = "Drum";
+    state =
+     {node = 1;
+      data =
+       {clock = 5.; sound = Sic (5., ["tchak"]);
+        soundtrack = [(3., "Poumtchak"); (1., "Poumtchak")]}}};
+   {automaton = "Default";
+    state = {node = 1; data = {clock = 5.; sound = Nil; soundtrack = []}}};
+   {automaton = "Default";
+    state = {node = 1; data = {clock = 5.; sound = Nil; soundtrack = []}}}];
+ sheet = [];
+ soundtracks =  [ [] ; [] ; [] ; [(5., "tchak"); (3., "Poumtchak"); (1., "Poumtchak")] ; [] ; [] ]
+}
