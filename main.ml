@@ -232,6 +232,7 @@ struct
     
   let (update_clock: clock -> data -> data) = fun clock data ->
     { data with clock = clock }
+
 end
 
 
@@ -247,8 +248,7 @@ type action = (clock * data * symbol) -> data
 module Action = 
 struct
 
-    (* USAGE: (increase_clock_by 1.0)  or (increase_clock_by 0.5)  *)
-
+  (* USAGE: (increase_clock_by 1.0)  or (increase_clock_by 0.5)  *)
   let (increase_clock_by: Clock.duration -> action) = fun duration -> 
     fun (clock,data,symbol) -> 
       { data with clock = Clock.shift_by duration clock }
@@ -269,7 +269,9 @@ struct
   (* A vérifier **********************************************)
   let (make_sound: string -> action) = fun string ->
     fun (clock,data,symbol) -> 
-      { data with sound = Sic (clock, [string] }
+      Data.finalize (extend_sound_with string (clock, data, string))
+(*      { (Data.finalize data) with sound = Sic (clock, [string]) }*)
+(*      { data with sound = Sound.extend_with string clock Nil }*)
       (*............................................................*)
 	
     (* DEFAULT ACTION: update_clock *)
@@ -286,8 +288,8 @@ struct
         | action::other_actions -> 
           let data'= action (clock,data,symbol) in 
             let clock' = Data.get_clock data' in 
-              apply_sequence_of other_actions (clock',data',symbol)
-	   
+              apply_sequence_of other_actions (clock',data',symbol)   
+
 end
 
 
@@ -328,15 +330,19 @@ struct
       
     (* TODO: get_transition_on *)
       
-  (*let (get_transition_on: symbol -> automaton -> node -> transition option) = fun symbol automaton current_node ->
+  let (get_transition_on: symbol -> automaton -> node -> transition option) = fun symbol automaton current_node ->
     let enabled_transitions = 
-      ............
-	...........................................................................................
-	.....................
-	...
-	................................
-      |............. -> None 
-      |............. -> Some transition*)
+      List.filter 
+      (*............*)
+        (fun t -> let (nC, l, aS, nF) = t in (Pattern.matches l symbol) && (nC = current_node))
+        (*...........................................................................................*)
+        automaton.transitions
+        (*.....................*)
+      in
+        match enabled_transitions with 
+        (*................................*)
+        | []           -> None 
+        | [transition] -> Some transition
 
 
   let (install: automaton list -> (string * automaton) list) = fun automata -> List.map (fun aut -> (aut.name,aut)) automata
@@ -394,7 +400,7 @@ struct
     
     (* get / update *)
     
-  let (get_clock: state -> clock)   = fun state -> Data.get_clock state.data
+  let (get_clock: state -> clock) = fun state -> Data.get_clock state.data
     
   let (get_soundtrack: state -> soundtrack) = fun state -> Data.get_soundtrack state.data
     
@@ -402,14 +408,14 @@ struct
     { state with data = Data.update_clock clock state.data }
 
   let (update: (clock * state) -> (symbol * action sequence * node) -> state) = fun (clock,state) (symbol,actions,target_node) ->
-    { state with 
+    { 
       node = target_node ; 
       data = Action.apply_sequence_of actions (clock,state.data,symbol)
     }
 end
 
 
-(** 6.2 Process : a process is a running automatond with a current state **)
+(** 6.2 Process : a process is a running automaton with a current state **)
 
 type process = { automaton: string ; state: state  }
 
@@ -431,20 +437,24 @@ struct
     
     (* TODO: one step *)
     
-  (*let (one_step_on: symbol -> (clock * process) -> (clock * process)) = fun symbol (clock,process) ->
-    .....................................
-      ...
-      .........................................................................................................
-    |........................
-    |...................................
-  let state' = ...............................................................
-  in let clock' = State.get_clock state'
-  and process' = .................................
-     in (clock', process')*)
+  let (one_step_on: symbol -> (clock * process) -> (clock * process)) = fun symbol (clock,process) ->
+(*    .....................................*)
+    let currentNode = process.state.node
+      in 
+      match Automaton.get_transition_on symbol (Automaton.named process.automaton _AUTOMATA_) currentNode with
+(*      .........................................................................................................*)
+      | None -> (clock, process)
+      | Some (nC, l, actions, nF) ->
+          let state' = State.update (clock, process.state) (symbol, actions, currentNode) 
+(*                       ...............................................................*)
+             in let clock' = State.get_clock state'
+               and process' = { process with state = state' }
+(*                              .................................*)
+               in (clock', process')
      
     (* GIVEN: one step each in parallel *)
      
-  (*let (one_step_each_process: symbol list -> (clock * process list) -> (clock * process list)) = 
+  let (one_step_each_process: symbol list -> (clock * process list) -> (clock * process list)) = 
     
     let rec (one_step_each_tailrec: (clock * process list) -> (symbol list * process list) -> (clock * process list)) = fun (clock, moved_process) (more_symbols,more_process) ->
       match (more_symbols, more_process) with
@@ -453,7 +463,7 @@ struct
 	let  (clock', process') = one_step_on symbol (clock,process)
 	in  one_step_each_tailrec (clock' , process' :: moved_process) (other_symbols,other_process)
     in 
-    fun  symbols (clock,processus) -> one_step_each_tailrec (clock,[]) (symbols,processus)*)
+    fun  symbols (clock,processus) -> one_step_each_tailrec (clock,[]) (symbols,processus)
       
 end
 
@@ -483,13 +493,14 @@ struct
       
     (* TO BE COMPLETED: one step*)
       
-  (*let (one_step: run -> run) = fun run ->
+  let (one_step: run -> run) = fun run ->
     match run.sheet with
-    | [] -> { run with soundtracks = ............................................. }
+    | [] -> { run with soundtracks = List.map Process.get_soundtrack run.processus }
+(*                                     ............................................. }*)
     | frame::sheet' -> 
       let symbols = List.map (String.make 1) frame
       in let (clock',processus') = Process.one_step_each_process symbols (run.clock,run.processus)
-	 in { run with clock = clock' ; processus = processus' ; sheet = sheet' }*)
+	 in { run with clock = clock' ; processus = processus' ; sheet = sheet' }
 end
 
 
@@ -505,11 +516,11 @@ let (initialize: automaton list -> sheet -> run) = fun automata sheet ->
     !(_RUN)
   end
     
-(*let (one_step: unit -> run) = fun () ->
+let (one_step: unit -> run) = fun () ->
   begin
     _RUN := SheetParser.one_step !(_RUN) ; 
     !(_RUN)
-  end*)
+  end
     
 	  
 (** 7.2 The sheet parser is a list of processes that run some automata **)
@@ -529,7 +540,7 @@ sheetparser sheet ;; (* pour lancer le parser sur la partition *)
 
 (* puis répéter *)
 
-(*one_step () ;;*)  (* lecture d'une frame à la fois *)
+one_step () ;;  (* lecture d'une frame à la fois *)
 
 
 (** 7.8 Trace 
