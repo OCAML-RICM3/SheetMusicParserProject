@@ -100,6 +100,8 @@
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">sig</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;initial_node&nbsp;:&nbsp;<span class="constructor">Main</span>.node<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;make&nbsp;:&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Main</span>.transition&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Main</span>.automaton<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_transition_on&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Main</span>.symbol&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Main</span>.automaton&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Main</span>.node&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Main</span>.transition&nbsp;option<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;install&nbsp;:&nbsp;<span class="constructor">Main</span>.automaton&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(string&nbsp;*&nbsp;<span class="constructor">Main</span>.automaton)&nbsp;list<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;named&nbsp;:&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(string&nbsp;*&nbsp;<span class="constructor">Main</span>.automaton)&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Main</span>.automaton<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">end</span><br>
@@ -126,6 +128,11 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_soundtrack&nbsp;:&nbsp;<span class="constructor">Main</span>.process&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Main</span>.soundtrack<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;update_clock&nbsp;:&nbsp;<span class="constructor">Main</span>.clock&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Main</span>.process&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Main</span>.process<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;initialize&nbsp;:&nbsp;<span class="constructor">Main</span>.automaton&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Main</span>.process<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;one_step_on&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Main</span>.symbol&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Main</span>.clock&nbsp;*&nbsp;<span class="constructor">Main</span>.process&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Main</span>.clock&nbsp;*&nbsp;<span class="constructor">Main</span>.process<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;one_step_each_process&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Main</span>.symbol&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Main</span>.clock&nbsp;*&nbsp;<span class="constructor">Main</span>.process&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Main</span>.clock&nbsp;*&nbsp;<span class="constructor">Main</span>.process&nbsp;list<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">end</span><br>
 &nbsp;&nbsp;<span class="keyword">type</span>&nbsp;frame&nbsp;=&nbsp;char&nbsp;list<br>
 &nbsp;&nbsp;<span class="keyword">type</span>&nbsp;sheet&nbsp;=&nbsp;<span class="constructor">Main</span>.frame&nbsp;list<br>
@@ -136,9 +143,13 @@
 &nbsp;&nbsp;&nbsp;&nbsp;soundtracks&nbsp;:&nbsp;<span class="constructor">Main</span>.soundtrack&nbsp;list;<br>
 &nbsp;&nbsp;}<br>
 &nbsp;&nbsp;<span class="keyword">module</span>&nbsp;<span class="constructor">SheetParser</span>&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">sig</span>&nbsp;<span class="keyword">val</span>&nbsp;initialize&nbsp;:&nbsp;<span class="constructor">Main</span>.automaton&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Main</span>.sheet&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Main</span>.run&nbsp;<span class="keyword">end</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">sig</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;initialize&nbsp;:&nbsp;<span class="constructor">Main</span>.automaton&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Main</span>.sheet&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Main</span>.run<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;one_step&nbsp;:&nbsp;<span class="constructor">Main</span>.run&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Main</span>.run<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">end</span><br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_RUN&nbsp;:&nbsp;<span class="constructor">Main</span>.run&nbsp;<span class="constructor">Pervasives</span>.ref<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;initialize&nbsp;:&nbsp;<span class="constructor">Main</span>.automaton&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Main</span>.sheet&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Main</span>.run<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;one_step&nbsp;:&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Main</span>.run<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;sheetparser&nbsp;:&nbsp;<span class="constructor">Main</span>.sheet&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Main</span>.run<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;full_sheet&nbsp;:&nbsp;<span class="constructor">Main</span>.<span class="constructor">MyString</span>.column&nbsp;list<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;sheet&nbsp;:&nbsp;<span class="constructor">Main</span>.<span class="constructor">MyString</span>.column&nbsp;list<br>

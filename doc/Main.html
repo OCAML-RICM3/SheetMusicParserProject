@@ -16,7 +16,7 @@
 <h1>Module <a href="type_Main.html">Main</a></h1>
 
 <pre><span class="keyword">module</span> Main: <code class="code">sig</code> <a href="Main.html">..</a> <code class="code">end</code></pre><div class="info module top">
-Programme de parsing de partitions.<br>
+Parser de partitions.<br>
 </div>
 <hr width="100%">
 
@@ -240,11 +240,26 @@ Definition d'un automate par son nom et une liste de transitions.<br>
 Module d'operations sur les automates.
 </div>
 
-<pre><span id="VALadef"><span class="keyword">val</span> adef</span> : <code class="type"><a href="Main.html#TYPEautomaton">automaton</a></code></pre>
-<pre><span id="VALdigit"><span class="keyword">val</span> digit</span> : <code class="type">string list</code></pre>
-<pre><span id="VALatempo"><span class="keyword">val</span> atempo</span> : <code class="type"><a href="Main.html#TYPEautomaton">automaton</a></code></pre>
-<pre><span id="VALadrum"><span class="keyword">val</span> adrum</span> : <code class="type"><a href="Main.html#TYPEautomaton">automaton</a></code></pre>
-<pre><span id="VAL_AUTOMATA_"><span class="keyword">val</span> _AUTOMATA_</span> : <code class="type">(string * <a href="Main.html#TYPEautomaton">automaton</a>) list</code></pre>
+<pre><span id="VALadef"><span class="keyword">val</span> adef</span> : <code class="type"><a href="Main.html#TYPEautomaton">automaton</a></code></pre><div class="info ">
+Automate par defaut. Automate a 1 etat. &lt;br&gt; (1, tout, 1) -&gt; update_clock.<br>
+</div>
+
+<pre><span id="VALdigit"><span class="keyword">val</span> digit</span> : <code class="type">string list</code></pre><div class="info ">
+Liste des chiffres de 0 à 9 sous forme de caracteres ('0'..'9').<br>
+</div>
+
+<pre><span id="VALatempo"><span class="keyword">val</span> atempo</span> : <code class="type"><a href="Main.html#TYPEautomaton">automaton</a></code></pre><div class="info ">
+Automate de parsing du tempo. Automate a 1 etat.&lt;br&gt; (1, si c'est un digit, 1) -&gt; increase_clock_by 1.0 &lt;br&gt; (1, '.', 1) -&gt; increase_clock_by 0.5 &lt;br&gt; (1, 'T' ou ':' ou '|' ou ' ', 1) -&gt; ne rien faire.<br>
+</div>
+
+<pre><span id="VALadrum"><span class="keyword">val</span> adrum</span> : <code class="type"><a href="Main.html#TYPEautomaton">automaton</a></code></pre><div class="info ">
+Automate de parsing de la batterie. Automate a 1 etat.&lt;br&gt; (1, 'b', 1) -&gt; extend_sound_with "tchak" &lt;br&gt; (1, 'B', 1) -&gt; make_sound "Poum" &lt;br&gt; (1, tout sauf 'b' et 'B', 1) -&gt; finalize_sound.<br>
+</div>
+
+<pre><span id="VAL_AUTOMATA_"><span class="keyword">val</span> _AUTOMATA_</span> : <code class="type">(string * <a href="Main.html#TYPEautomaton">automaton</a>) list</code></pre><div class="info ">
+Liste des automates adef, atempo et adrum associes a leur noms respectifs.<br>
+</div>
+
 <pre><code><span id="TYPEstate"><span class="keyword">type</span> <code class="type"></code>state</span> = {</code></pre><table class="typetable">
 <tr>
 <td align="left" valign="top" >
@@ -262,9 +277,15 @@ Module d'operations sur les automates.
 </tr></table>
 }
 
+<div class="info ">
+Definition du type state. Un etat est definit par le noeud courrant et par la donnee du son en construction.<br>
+</div>
 
 
-<pre><span class="keyword">module</span> <a href="Main.State.html">State</a>: <code class="code">sig</code> <a href="Main.State.html">..</a> <code class="code">end</code></pre>
+<pre><span class="keyword">module</span> <a href="Main.State.html">State</a>: <code class="code">sig</code> <a href="Main.State.html">..</a> <code class="code">end</code></pre><div class="info">
+Module d'operations sur le le type State.
+</div>
+
 <pre><code><span id="TYPEprocess"><span class="keyword">type</span> <code class="type"></code>process</span> = {</code></pre><table class="typetable">
 <tr>
 <td align="left" valign="top" >
@@ -282,10 +303,18 @@ Module d'operations sur les automates.
 </tr></table>
 }
 
+<div class="info ">
+Definition du type process, tel qu'une process est compose du nom d'un automate et d'un etat.<br>
+</div>
 
 
-<pre><span class="keyword">module</span> <a href="Main.Process.html">Process</a>: <code class="code">sig</code> <a href="Main.Process.html">..</a> <code class="code">end</code></pre>
+<pre><span class="keyword">module</span> <a href="Main.Process.html">Process</a>: <code class="code">sig</code> <a href="Main.Process.html">..</a> <code class="code">end</code></pre><div class="info">
+Module d'operations sur le type process.
+</div>
+
 <pre><span id="TYPEframe"><span class="keyword">type</span> <code class="type"></code>frame</span> = <code class="type">char list</code> </pre>
+<div class="info ">
+</div>
 
 
 <pre><span id="TYPEsheet"><span class="keyword">type</span> <code class="type"></code>sheet</span> = <code class="type"><a href="Main.html#TYPEframe">frame</a> list</code> </pre>
@@ -322,11 +351,36 @@ Module d'operations sur les automates.
 </tr></table>
 }
 
+<div class="info ">
+Un sheet parser est une liste de processus. Chaque processus doit analyser une ligne de la partition. Tout les processus fonctionnent en meme temps tout en etant synchronise. &lt;br&gt; Le type run est definit par une clock de reference pour tout les process, une liste de process, ce qu'il reste a lire de la partition et une liste de soundtrack.&lt;br&gt; Quand on arrive a la fin de la partition, la liste de soundtracks est rempli par l'ensemble des soundtracks de chaque process.<br>
+</div>
 
 
-<pre><span class="keyword">module</span> <a href="Main.SheetParser.html">SheetParser</a>: <code class="code">sig</code> <a href="Main.SheetParser.html">..</a> <code class="code">end</code></pre>
-<pre><span id="VAL_RUN"><span class="keyword">val</span> _RUN</span> : <code class="type"><a href="Main.html#TYPErun">run</a> Pervasives.ref</code></pre>
-<pre><span id="VALinitialize"><span class="keyword">val</span> initialize</span> : <code class="type"><a href="Main.html#TYPEautomaton">automaton</a> list -> <a href="Main.html#TYPEsheet">sheet</a> -> <a href="Main.html#TYPErun">run</a></code></pre>
-<pre><span id="VALsheetparser"><span class="keyword">val</span> sheetparser</span> : <code class="type"><a href="Main.html#TYPEsheet">sheet</a> -> <a href="Main.html#TYPErun">run</a></code></pre>
-<pre><span id="VALfull_sheet"><span class="keyword">val</span> full_sheet</span> : <code class="type"><a href="Main.MyString.html#TYPEcolumn">MyString.column</a> list</code></pre>
-<pre><span id="VALsheet"><span class="keyword">val</span> sheet</span> : <code class="type"><a href="Main.MyString.html#TYPEcolumn">MyString.column</a> list</code></pre></body></html>
+<pre><span class="keyword">module</span> <a href="Main.SheetParser.html">SheetParser</a>: <code class="code">sig</code> <a href="Main.SheetParser.html">..</a> <code class="code">end</code></pre><div class="info">
+Module d'utilisation du Parser de Partitions.
+</div>
+
+<pre><span id="VAL_RUN"><span class="keyword">val</span> _RUN</span> : <code class="type"><a href="Main.html#TYPErun">run</a> Pervasives.ref</code></pre><div class="info ">
+Utilisation de l'imperatif pour la lecture de la partition.<br>
+</div>
+
+<pre><span id="VALinitialize"><span class="keyword">val</span> initialize</span> : <code class="type"><a href="Main.html#TYPEautomaton">automaton</a> list -> <a href="Main.html#TYPEsheet">sheet</a> -> <a href="Main.html#TYPErun">run</a></code></pre><div class="info ">
+<b>Imperatif : </b>Initialise le parser en utilisant la fonction initialise du module SheetParser.<br>
+</div>
+
+<pre><span id="VALone_step"><span class="keyword">val</span> one_step</span> : <code class="type">unit -> <a href="Main.html#TYPErun">run</a></code></pre><div class="info ">
+<b>Imperatif : </b>Avance d'un pas dans la lecture de la partition.<br>
+</div>
+
+<pre><span id="VALsheetparser"><span class="keyword">val</span> sheetparser</span> : <code class="type"><a href="Main.html#TYPEsheet">sheet</a> -> <a href="Main.html#TYPErun">run</a></code></pre><div class="info ">
+Cree une variable de type run a partir d'une partition, tel que cette variable combine 6 processus correspondants a chaque lignes de la partition.<br>
+</div>
+
+<pre><span id="VALfull_sheet"><span class="keyword">val</span> full_sheet</span> : <code class="type"><a href="Main.MyString.html#TYPEcolumn">MyString.column</a> list</code></pre><div class="info ">
+Transpose de la partition row_sheet. On lis la partition a la verticale.<br>
+</div>
+
+<pre><span id="VALsheet"><span class="keyword">val</span> sheet</span> : <code class="type"><a href="Main.MyString.html#TYPEcolumn">MyString.column</a> list</code></pre><div class="info ">
+Renvoie les 8 premiers elements de la liste representative de la partition lu a la verticale.<br>
+</div>
+</body></html>

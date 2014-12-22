@@ -24,7 +24,23 @@ Module d'operations sur les automates.<br>
 </div>
 <hr width="100%">
 
-<pre><span id="VALinitial_node"><span class="keyword">val</span> initial_node</span> : <code class="type"><a href="Main.html#TYPEnode">Main.node</a></code></pre>
-<pre><span id="VALmake"><span class="keyword">val</span> make</span> : <code class="type">string -> <a href="Main.html#TYPEtransition">Main.transition</a> list -> <a href="Main.html#TYPEautomaton">Main.automaton</a></code></pre>
-<pre><span id="VALinstall"><span class="keyword">val</span> install</span> : <code class="type"><a href="Main.html#TYPEautomaton">Main.automaton</a> list -> (string * <a href="Main.html#TYPEautomaton">Main.automaton</a>) list</code></pre>
-<pre><span id="VALnamed"><span class="keyword">val</span> named</span> : <code class="type">string -> (string * <a href="Main.html#TYPEautomaton">Main.automaton</a>) list -> <a href="Main.html#TYPEautomaton">Main.automaton</a></code></pre></body></html>
+<pre><span id="VALinitial_node"><span class="keyword">val</span> initial_node</span> : <code class="type"><a href="Main.html#TYPEnode">Main.node</a></code></pre><div class="info ">
+Noeud initial = 1<br>
+</div>
+
+<pre><span id="VALmake"><span class="keyword">val</span> make</span> : <code class="type">string -> <a href="Main.html#TYPEtransition">Main.transition</a> list -> <a href="Main.html#TYPEautomaton">Main.automaton</a></code></pre><div class="info ">
+Cree un automate a partir d'une string (le nom de l'automate) et d'une liste de transitions.<br>
+</div>
+
+<pre><span id="VALget_transition_on"><span class="keyword">val</span> get_transition_on</span> : <code class="type"><a href="Main.html#TYPEsymbol">Main.symbol</a> -> <a href="Main.html#TYPEautomaton">Main.automaton</a> -> <a href="Main.html#TYPEnode">Main.node</a> -> <a href="Main.html#TYPEtransition">Main.transition</a> option</code></pre><div class="info ">
+Je ne sais pas pour le moment.<br>
+</div>
+
+<pre><span id="VALinstall"><span class="keyword">val</span> install</span> : <code class="type"><a href="Main.html#TYPEautomaton">Main.automaton</a> list -> (string * <a href="Main.html#TYPEautomaton">Main.automaton</a>) list</code></pre><div class="info ">
+Transforme une liste d'automates en une liste de couples (string * automaton) representant un automate associe a son nom.<br>
+</div>
+
+<pre><span id="VALnamed"><span class="keyword">val</span> named</span> : <code class="type">string -> (string * <a href="Main.html#TYPEautomaton">Main.automaton</a>) list -> <a href="Main.html#TYPEautomaton">Main.automaton</a></code></pre><div class="info ">
+Retourne l'automate associe a un nom donne en parametre, en faisant la recherche dans une liste de couple (nom * automate). Pour plus d'informations, consulter la doc de List sur http://caml.inria.fr/pub/docs/manual-ocaml/libref/List.html et plus particulièrement la fonction assoc de ce module.<br>
+</div>
+</body></html>

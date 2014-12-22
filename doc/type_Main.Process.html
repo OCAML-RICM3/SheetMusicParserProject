@@ -13,4 +13,9 @@
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_soundtrack&nbsp;:&nbsp;<span class="constructor">Main</span>.process&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Main</span>.soundtrack<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;update_clock&nbsp;:&nbsp;<span class="constructor">Main</span>.clock&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Main</span>.process&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Main</span>.process<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;initialize&nbsp;:&nbsp;<span class="constructor">Main</span>.automaton&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Main</span>.process<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;one_step_on&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Main</span>.symbol&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Main</span>.clock&nbsp;*&nbsp;<span class="constructor">Main</span>.process&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Main</span>.clock&nbsp;*&nbsp;<span class="constructor">Main</span>.process<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;one_step_each_process&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Main</span>.symbol&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Main</span>.clock&nbsp;*&nbsp;<span class="constructor">Main</span>.process&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Main</span>.clock&nbsp;*&nbsp;<span class="constructor">Main</span>.process&nbsp;list<br>
 <span class="keyword">end</span></code></body></html>

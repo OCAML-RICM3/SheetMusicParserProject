@@ -19,10 +19,28 @@
 </div>
 <h1>Module <a href="type_Main.State.html">Main.State</a></h1>
 
-<pre><span class="keyword">module</span> State: <code class="code">sig</code> <a href="Main.State.html">..</a> <code class="code">end</code></pre><hr width="100%">
+<pre><span class="keyword">module</span> State: <code class="code">sig</code> <a href="Main.State.html">..</a> <code class="code">end</code></pre><div class="info module top">
+Module d'operations sur le le type State.<br>
+</div>
+<hr width="100%">
 
-<pre><span id="VALinitial"><span class="keyword">val</span> initial</span> : <code class="type"><a href="Main.html#TYPEstate">Main.state</a></code></pre>
-<pre><span id="VALget_clock"><span class="keyword">val</span> get_clock</span> : <code class="type"><a href="Main.html#TYPEstate">Main.state</a> -> <a href="Main.html#TYPEclock">Main.clock</a></code></pre>
-<pre><span id="VALget_soundtrack"><span class="keyword">val</span> get_soundtrack</span> : <code class="type"><a href="Main.html#TYPEstate">Main.state</a> -> <a href="Main.html#TYPEsoundtrack">Main.soundtrack</a></code></pre>
-<pre><span id="VALupdate_clock"><span class="keyword">val</span> update_clock</span> : <code class="type"><a href="Main.html#TYPEclock">Main.clock</a> -> <a href="Main.html#TYPEstate">Main.state</a> -> <a href="Main.html#TYPEstate">Main.state</a></code></pre>
-<pre><span id="VALupdate"><span class="keyword">val</span> update</span> : <code class="type"><a href="Main.html#TYPEclock">Main.clock</a> * <a href="Main.html#TYPEstate">Main.state</a> -><br>       <a href="Main.html#TYPEsymbol">Main.symbol</a> * <a href="Main.html#TYPEaction">Main.action</a> <a href="Main.html#TYPEsequence">Main.sequence</a> * <a href="Main.html#TYPEnode">Main.node</a> -> <a href="Main.html#TYPEstate">Main.state</a></code></pre></body></html>
+<pre><span id="VALinitial"><span class="keyword">val</span> initial</span> : <code class="type"><a href="Main.html#TYPEstate">Main.state</a></code></pre><div class="info ">
+Etat initial. On est sur le noeud initial (1) et on a une donnee en construction vide (utilisation de la fonction initial du module Data.<br>
+</div>
+
+<pre><span id="VALget_clock"><span class="keyword">val</span> get_clock</span> : <code class="type"><a href="Main.html#TYPEstate">Main.state</a> -> <a href="Main.html#TYPEclock">Main.clock</a></code></pre><div class="info ">
+Recupere l'horloge de la donnee en construction.<br>
+</div>
+
+<pre><span id="VALget_soundtrack"><span class="keyword">val</span> get_soundtrack</span> : <code class="type"><a href="Main.html#TYPEstate">Main.state</a> -> <a href="Main.html#TYPEsoundtrack">Main.soundtrack</a></code></pre><div class="info ">
+Recupere la soundtrack de la donnee en construction.<br>
+</div>
+
+<pre><span id="VALupdate_clock"><span class="keyword">val</span> update_clock</span> : <code class="type"><a href="Main.html#TYPEclock">Main.clock</a> -> <a href="Main.html#TYPEstate">Main.state</a> -> <a href="Main.html#TYPEstate">Main.state</a></code></pre><div class="info ">
+Met a jour l'horloge de la donnee en construction.<br>
+</div>
+
+<pre><span id="VALupdate"><span class="keyword">val</span> update</span> : <code class="type"><a href="Main.html#TYPEclock">Main.clock</a> * <a href="Main.html#TYPEstate">Main.state</a> -><br>       <a href="Main.html#TYPEsymbol">Main.symbol</a> * <a href="Main.html#TYPEaction">Main.action</a> <a href="Main.html#TYPEsequence">Main.sequence</a> * <a href="Main.html#TYPEnode">Main.node</a> -> <a href="Main.html#TYPEstate">Main.state</a></code></pre><div class="info ">
+Met a jour un etat, en mettant a jour le noeud courrant (le nouveau noeud courrant est donne dans les parametres de la fonction) ainsi que la donnee en construction avec une sequence d'actions a faire.<br>
+</div>
+</body></html>

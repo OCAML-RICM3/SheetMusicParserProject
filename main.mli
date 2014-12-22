@@ -1,4 +1,4 @@
-(** Programme de parsing de partitions.*)
+(** Parser de partitions.*)
 
 (** Variable de debuggage.*)
 val _DEBUG_ : bool
@@ -181,44 +181,122 @@ type automaton = { name : string; transitions : transition list; }
 (** Module d'operations sur les automates.*)
 module Automaton :
   sig
+    (** Noeud initial = 1*)
     val initial_node : node
+
+    (** Cree un automate a partir d'une string (le nom de l'automate) et d'une liste de transitions.*)
     val make : string -> transition list -> automaton
+
+    (** Je ne sais pas pour le moment.*)
+    val get_transition_on : symbol -> automaton -> node -> transition option
+
+    (** Transforme une liste d'automates en une liste de couples (string * automaton) representant un automate associe a son nom.*)
     val install : automaton list -> (string * automaton) list
+
+    (** Retourne l'automate associe a un nom donne en parametre, en faisant la recherche dans une liste de couple (nom * automate). Pour plus d'informations, consulter la doc de List sur http://caml.inria.fr/pub/docs/manual-ocaml/libref/List.html et plus particulièrement la fonction assoc de ce module.*)
     val named : string -> (string * automaton) list -> automaton
   end
+
+(** Automate par defaut. Automate a 1 etat. <br> (1, tout, 1) -> update_clock.*)
 val adef : automaton
+
+(** Liste des chiffres de 0 à 9 sous forme de caracteres ('0'..'9').*)
 val digit : string list
+
+(** Automate de parsing du tempo. Automate a 1 etat.<br> (1, si c'est un digit, 1) -> increase_clock_by 1.0 <br> (1, '.', 1) -> increase_clock_by 0.5 <br> (1, 'T' ou ':' ou '|' ou ' ', 1) -> ne rien faire.*)
 val atempo : automaton
+
+(** Automate de parsing de la batterie. Automate a 1 etat.<br> (1, 'b', 1) -> extend_sound_with "tchak" <br> (1, 'B', 1) -> make_sound "Poum" <br> (1, tout sauf 'b' et 'B', 1) -> finalize_sound.*)
 val adrum : automaton
+
+(** Liste des automates adef, atempo et adrum associes a leur noms respectifs.*)
 val _AUTOMATA_ : (string * automaton) list
+
+(** Definition du type state. Un etat est definit par le noeud courrant et par la donnee du son en construction.*)
 type state = { node : node; data : data; }
+
+(** Module d'operations sur le le type State.*)
 module State :
   sig
+    (** Etat initial. On est sur le noeud initial (1) et on a une donnee en construction vide (utilisation de la fonction initial du module Data.*)
     val initial : state
+
+    (** Recupere l'horloge de la donnee en construction.*)
     val get_clock : state -> clock
+
+    (** Recupere la soundtrack de la donnee en construction.*)
     val get_soundtrack : state -> soundtrack
+
+    (** Met a jour l'horloge de la donnee en construction.*)
     val update_clock : clock -> state -> state
+
+    (** Met a jour un etat, en mettant a jour le noeud courrant (le nouveau noeud courrant est donne dans les parametres de la fonction) ainsi que la donnee en construction avec une sequence d'actions a faire.*)
     val update : clock * state -> symbol * action sequence * node -> state
   end
+
+(** Definition du type process, tel qu'une process est compose du nom d'un automate et d'un etat.*)
 type process = { automaton : string; state : state; }
+
+(** Module d'operations sur le type process.*)
 module Process :
   sig
+
+    (** Recupere l'horloge de l'etat.*)
     val get_clock : process -> clock
+
+    (** Recupere la soundtrack de l'etat.*)
     val get_soundtrack : process -> soundtrack
+
+    (** Met a jour l'horloge du process (a travers la mise a jour de l'horloge de l'etat).*)
     val update_clock : clock -> process -> process
+
+    (** Initialise un process avec un automate. Le process prend comme nom le nom de l'automate, et prend comme etat, l'etat initial.*)
     val initialize : automaton -> process
+
+    (** Avance d'un etat dans un process.*)
+    val one_step_on : symbol -> (clock * process) -> (clock * process)
+
+    (** Avance d'un etat dans un ensemble de process.*)
+    val one_step_each_process : symbol list -> (clock * process list) -> (clock * process list)
   end
+
+(** *)
 type frame = char list
 type sheet = frame list
+
+(** Un sheet parser est une liste de processus. Chaque processus doit analyser une ligne de la partition. Tout les processus fonctionnent en meme temps tout en etant synchronise. <br> Le type run est definit par une clock de reference pour tout les process, une liste de process, ce qu'il reste a lire de la partition et une liste de soundtrack.<br> Quand on arrive a la fin de la partition, la liste de soundtracks est rempli par l'ensemble des soundtracks de chaque process.*)
 type run = {
   clock : clock;
   processus : process list;
   sheet : sheet;
   soundtracks : soundtrack list;
 }
-module SheetParser : sig val initialize : automaton list -> sheet -> run end
+
+(** Module d'utilisation du Parser de Partitions.*)
+module SheetParser : 
+  sig
+
+    (** Initialise une variable de type run, en initialisant la clock a son etat initial, la liste de processus est cree en utilisant la fonction initialize du module Process permettant d'initialiser un process a partir d'un automate, applique a la liste d'automates. La liste de soundtrack est initialise a [].*)
+    val initialize : automaton list -> sheet -> run
+
+    (** Avance d'une etape dans chaque process si la sheet de la variable run passe en parametre n'est pas vide. Si elle est vide, on finalise la liste de soundtracks (on rempli la liste de soundtracks).*)
+    val one_step : run -> run
+  end
+
+(** Utilisation de l'imperatif pour la lecture de la partition.*)
 val _RUN : run ref
+
+(** <b>Imperatif : </b>Initialise le parser en utilisant la fonction initialise du module SheetParser.*)
 val initialize : automaton list -> sheet -> run
+
+(** <b>Imperatif : </b>Avance d'un pas dans la lecture de la partition.*)
+val one_step : unit -> run
+
+(** Cree une variable de type run a partir d'une partition, tel que cette variable combine 6 processus correspondants a chaque lignes de la partition.*)
 val sheetparser : sheet -> run
+
+(** Transpose de la partition row_sheet. On lis la partition a la verticale.*)
 val full_sheet : MyString.column list
+
+(** Renvoie les 8 premiers elements de la liste representative de la partition lu a la verticale.*)
 val sheet : MyString.column list

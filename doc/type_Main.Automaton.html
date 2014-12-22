@@ -11,6 +11,8 @@
 <code class="code"><span class="keyword">sig</span><br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;initial_node&nbsp;:&nbsp;<span class="constructor">Main</span>.node<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;make&nbsp;:&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Main</span>.transition&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Main</span>.automaton<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_transition_on&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Main</span>.symbol&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Main</span>.automaton&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Main</span>.node&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Main</span>.transition&nbsp;option<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;install&nbsp;:&nbsp;<span class="constructor">Main</span>.automaton&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(string&nbsp;*&nbsp;<span class="constructor">Main</span>.automaton)&nbsp;list<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;named&nbsp;:&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(string&nbsp;*&nbsp;<span class="constructor">Main</span>.automaton)&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Main</span>.automaton<br>
 <span class="keyword">end</span></code></body></html>
