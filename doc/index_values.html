@@ -1,7 +1,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="style.css" type="text/css">
-<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 <link rel="Start" href="index.html">
 <link title="Index of types" rel=Appendix href="index_types.html">
 <link title="Index of values" rel=Appendix href="index_values.html">
@@ -16,23 +16,28 @@
 <tr><td align="left"><br></td></tr>
 <tr><td><a href="Main.html#VAL_AUTOMATA_">_AUTOMATA_</a> [<a href="Main.html">Main</a>]</td>
 <td><div class="info">
-Liste des automates adef, atempo et adrum associes a leur noms respectifs.
+Liste des automates adef, atempo et adrum associés à leur noms respectifs.
 </div>
 </td></tr>
 <tr><td><a href="Main.html#VAL_DEBUG_">_DEBUG_</a> [<a href="Main.html">Main</a>]</td>
 <td><div class="info">
-Variable de debuggage.
+Variable de débuggage.
 </div>
 </td></tr>
 <tr><td><a href="Main.html#VAL_RUN">_RUN</a> [<a href="Main.html">Main</a>]</td>
 <td><div class="info">
-Utilisation de l'imperatif pour la lecture de la partition.
+Utilisation de l'impératif pour la lecture de la partition.
 </div>
 </td></tr>
 <tr><td align="left"><br>A</td></tr>
+<tr><td><a href="Main.Repeat.html#VALaddTime">addTime</a> [<a href="Main.Repeat.html">Main.Repeat</a>]</td>
+<td><div class="info">
+Augmente le temps d'une durée donné pour chaque élément d'une liste de newSoundtrack.
+</div>
+</td></tr>
 <tr><td><a href="Main.html#VALadef">adef</a> [<a href="Main.html">Main</a>]</td>
 <td><div class="info">
-Automate par defaut.
+Automate par défaut.
 </div>
 </td></tr>
 <tr><td><a href="Main.html#VALadrum">adrum</a> [<a href="Main.html">Main</a>]</td>
@@ -40,9 +45,24 @@ Automate par defaut.
 Automate de parsing de la batterie.
 </div>
 </td></tr>
+<tr><td><a href="Main.html#VALaguitar">aguitar</a> [<a href="Main.html">Main</a>]</td>
+<td><div class="info">
+Automate de parsing de la guitare.
+</div>
+</td></tr>
+<tr><td><a href="Main.Repeat.html#VALapplyRepeat">applyRepeat</a> [<a href="Main.Repeat.html">Main.Repeat</a>]</td>
+<td><div class="info">
+Applique un ensemble de répétitions.
+</div>
+</td></tr>
 <tr><td><a href="Main.Action.html#VALapply_sequence_of">apply_sequence_of</a> [<a href="Main.Action.html">Main.Action</a>]</td>
 <td><div class="info">
 Applique une liste d'actions en une seule.
+</div>
+</td></tr>
+<tr><td><a href="Main.html#VALarepeat">arepeat</a> [<a href="Main.html">Main</a>]</td>
+<td><div class="info">
+Automate de parsing des répétitions.
 </div>
 </td></tr>
 <tr><td><a href="Main.html#VALatempo">atempo</a> [<a href="Main.html">Main</a>]</td>
@@ -50,29 +70,90 @@ Applique une liste d'actions en une seule.
 Automate de parsing du tempo.
 </div>
 </td></tr>
+<tr><td><a href="Main.html#VALaverbose">averbose</a> [<a href="Main.html">Main</a>]</td>
+<td><div class="info">
+Automate de parsing des paroles.
+</div>
+</td></tr>
+<tr><td align="left"><br>B</td></tr>
+<tr><td><a href="Main.SyncSound.html#VALbind">bind</a> [<a href="Main.SyncSound.html">Main.SyncSound</a>]</td>
+<td><div class="info">
+Combine un couple (clock*string list) à un autre élément d'une liste donnée si ceux-ci ont la même clock.
+</div>
+</td></tr>
 <tr><td align="left"><br>C</td></tr>
 <tr><td><a href="Main.MyString.html#VALchar_list_to_string">char_list_to_string</a> [<a href="Main.MyString.html">Main.MyString</a>]</td>
 <td></td></tr>
+<tr><td><a href="Main.SyncSound.html#VALcombine">combine</a> [<a href="Main.SyncSound.html">Main.SyncSound</a>]</td>
+<td><div class="info">
+Transforme une liste de soundtrack basique en une newSoundtrack list, et combine l'ensemble de ses éléments.
+</div>
+</td></tr>
+<tr><td><a href="Main.SyncSound.html#VALcombineSub">combineSub</a> [<a href="Main.SyncSound.html">Main.SyncSound</a>]</td>
+<td><div class="info">
+Combine l'ensemble d'une newSoundtrack list, permettant de créer le format de donné demandé pour le 14/20
+</div>
+</td></tr>
+<tr><td><a href="Main.SyncSound.html#VALcompare">compare</a> [<a href="Main.SyncSound.html">Main.SyncSound</a>]</td>
+<td><div class="info">
+Fonction de comparaison permettant de trier une newSoundtrack list à l'aide de List.sort
+</div>
+</td></tr>
+<tr><td><a href="Main.Repeat.html#VALcontainStart">containStart</a> [<a href="Main.Repeat.html">Main.Repeat</a>]</td>
+<td><div class="info">
+Cherche si une liste de string contient la chaine "start".
+</div>
+</td></tr>
+<tr><td><a href="Main.Repeat.html#VALcontainStartAndStop">containStartAndStop</a> [<a href="Main.Repeat.html">Main.Repeat</a>]</td>
+<td><div class="info">
+Cherche si une liste de string contient la chaine "start" et la chaine "stop".
+</div>
+</td></tr>
+<tr><td><a href="Main.Repeat.html#VALcontainStartOrStop">containStartOrStop</a> [<a href="Main.Repeat.html">Main.Repeat</a>]</td>
+<td><div class="info">
+Cherche si une liste de string contient la chaine "start" ou la chaine "stop".
+</div>
+</td></tr>
+<tr><td><a href="Main.Repeat.html#VALcontainStop">containStop</a> [<a href="Main.Repeat.html">Main.Repeat</a>]</td>
+<td><div class="info">
+Cherche si une liste de string contient la chaine "stop".
+</div>
+</td></tr>
 <tr><td align="left"><br>D</td></tr>
+<tr><td><a href="Main.Repeat.html#VALdeleteString">deleteString</a> [<a href="Main.Repeat.html">Main.Repeat</a>]</td>
+<td><div class="info">
+Supprimer une string donnée d'une liste de string.
+</div>
+</td></tr>
 <tr><td><a href="Main.html#VALdigit">digit</a> [<a href="Main.html">Main</a>]</td>
 <td><div class="info">
-Liste des chiffres de 0 à 9 sous forme de caracteres ('0'..'9').
+Liste des chiffres de 0 à 9 sous forme de caractères ('0'..'9').
+</div>
+</td></tr>
+<tr><td><a href="Main.html#VALdo_all">do_all</a> [<a href="Main.html">Main</a>]</td>
+<td><div class="info">
+<b>Impératif : </b>Lis l'ensemble d'une partition et lance l'exécution du karaoke.
 </div>
 </td></tr>
 <tr><td align="left"><br>E</td></tr>
 <tr><td><a href="Main.html#VALepsilon">epsilon</a> [<a href="Main.html">Main</a>]</td>
 <td><div class="info">
-Variable epsilon des automates a epsilon-transition.
+Variable epsilon des automates à epsilon-transition.
 </div>
 </td></tr>
 <tr><td><a href="Main.Pattern.html#VALexactly">exactly</a> [<a href="Main.Pattern.html">Main.Pattern</a>]</td>
 <td><div class="info">
-Renvoie true si le pattern donne en parametre est de type KEY et que la composante de KEY vaut un parametre de type 'a donne.
+Renvoie true si le pattern donné en paramètre est de type KEY et que la composante de KEY vaut un paramètre de type 'a donné.
 </div>
 </td></tr>
 <tr><td><a href="Main.Action.html#VALextend_sound_with">extend_sound_with</a> [<a href="Main.Action.html">Main.Action</a>]</td>
 <td><div class="info">
-Cree l'action qui ajoute a un son une string donnee.
+Crée l'action qui ajoute à un son une string donnée.
+</div>
+</td></tr>
+<tr><td><a href="Main.Action.html#VALextend_sound_with_symbol">extend_sound_with_symbol</a> [<a href="Main.Action.html">Main.Action</a>]</td>
+<td><div class="info">
+Crée l'action qui ajoute à un son le symbole lu par l'automate.
 </div>
 </td></tr>
 <tr><td><a href="Main.Sound.html#VALextend_with">extend_with</a> [<a href="Main.Sound.html">Main.Sound</a>]</td>
@@ -80,79 +161,109 @@ Cree l'action qui ajoute a un son une string donnee.
 Etend un son en construction avec une nouvelle string.
 </div>
 </td></tr>
+<tr><td><a href="Main.Sound.html#VALextend_with_tail">extend_with_tail</a> [<a href="Main.Sound.html">Main.Sound</a>]</td>
+<td><div class="info">
+Même fonctionnalités que extend_with, mais l'ajout se fait ici en queue.
+</div>
+</td></tr>
+<tr><td><a href="Main.Repeat.html#VALextractFromTo">extractFromTo</a> [<a href="Main.Repeat.html">Main.Repeat</a>]</td>
+<td><div class="info">
+Extrait une partie d'une newSoundtrack en se basant sur un temps de départ et un temps de fin.
+</div>
+</td></tr>
+<tr><td><a href="Main.Repeat.html#VALextractRepeat">extractRepeat</a> [<a href="Main.Repeat.html">Main.Repeat</a>]</td>
+<td><div class="info">
+Extrait un ensemble de répétitions à partir liste de newSoundtrack représentant les données de répétitions.
+</div>
+</td></tr>
+<tr><td><a href="Main.Repeat.html#VALextractStartAndStop">extractStartAndStop</a> [<a href="Main.Repeat.html">Main.Repeat</a>]</td>
+<td><div class="info">
+Extrait d'une liste de newSoundrtack l'ensemble des données de répétitions.
+</div>
+</td></tr>
 <tr><td align="left"><br>F</td></tr>
 <tr><td><a href="Main.Data.html#VALfinalize">finalize</a> [<a href="Main.Data.html">Main.Data</a>]</td>
 <td><div class="info">
-Finalise une variable data en ajoutant le son en construction a la soundtrack et en detruisant sic.
+Finalise une variable data en ajoutant le son en construction à la soundtrack et en détruisant sic.
 </div>
 </td></tr>
 <tr><td><a href="Main.Sound.html#VALfinalize">finalize</a> [<a href="Main.Sound.html">Main.Sound</a>]</td>
 <td><div class="info">
-Cree une soundtrack a partir d'un son en construction.
+Crée une soundtrack à partir d'un son en construction.
 </div>
 </td></tr>
 <tr><td><a href="Main.Action.html#VALfinalize_sound">finalize_sound</a> [<a href="Main.Action.html">Main.Action</a>]</td>
 <td><div class="info">
-Cree l'action qui finalise un objet data au sens de la fonction finalize du module Data.
+Crée l'action qui finalise un objet data au sens de la fonction finalize du module Data.
+</div>
+</td></tr>
+<tr><td><a href="Main.Action.html#VALfinalize_sound_drum">finalize_sound_drum</a> [<a href="Main.Action.html">Main.Action</a>]</td>
+<td><div class="info">
+Crée l'action qui finalize un objet data au sens de la fonction finalize du module Data.
 </div>
 </td></tr>
 <tr><td><a href="Main.MyList.html#VALfirst">first</a> [<a href="Main.MyList.html">Main.MyList</a>]</td>
 <td><div class="info">
-Renvoie les n premiers elements d'une liste.
+Renvoie les n premiers éléments d'une liste.
 </div>
 </td></tr>
 <tr><td><a href="Main.MyString.html#VALfold">fold</a> [<a href="Main.MyString.html">Main.MyString</a>]</td>
 <td></td></tr>
 <tr><td><a href="Main.MyList.html#VALforeach">foreach</a> [<a href="Main.MyList.html">Main.MyList</a>]</td>
 <td><div class="info">
-Cree une liste d'elements de type 'y a partir d'une liste d'elements de type 'x, et d'une fonction de conversion transformant un x en une liste de 'y.
+Crée une liste d'elements de type 'y à partir d'une liste d'éléments de type 'x, et d'une fonction de conversion transformant un x en une liste de 'y.
 </div>
 </td></tr>
 <tr><td><a href="Main.html#VALfull_sheet">full_sheet</a> [<a href="Main.html">Main</a>]</td>
 <td><div class="info">
-Transpose de la partition row_sheet.
+Transposé de la partition row_sheet.
 </div>
 </td></tr>
 <tr><td align="left"><br>G</td></tr>
+<tr><td><a href="Main.Repeat.html#VALgetRepeatNumb">getRepeatNumb</a> [<a href="Main.Repeat.html">Main.Repeat</a>]</td>
+<td><div class="info">
+Récupère le nombre de répétitions à partir d'une liste de string.
+</div>
+</td></tr>
 <tr><td><a href="Main.Process.html#VALget_clock">get_clock</a> [<a href="Main.Process.html">Main.Process</a>]</td>
 <td><div class="info">
-Recupere l'horloge de l'etat.
+Récupère l'horloge de l'état.
 </div>
 </td></tr>
 <tr><td><a href="Main.State.html#VALget_clock">get_clock</a> [<a href="Main.State.html">Main.State</a>]</td>
 <td><div class="info">
-Recupere l'horloge de la donnee en construction.
+Récupère l'horloge de la donnée en construction.
 </div>
 </td></tr>
 <tr><td><a href="Main.Data.html#VALget_clock">get_clock</a> [<a href="Main.Data.html">Main.Data</a>]</td>
 <td><div class="info">
-Recupere la clock.
+Récupère la clock.
 </div>
 </td></tr>
 <tr><td><a href="Main.Process.html#VALget_soundtrack">get_soundtrack</a> [<a href="Main.Process.html">Main.Process</a>]</td>
 <td><div class="info">
-Recupere la soundtrack de l'etat.
+Récupère la soundtrack de l'état.
 </div>
 </td></tr>
 <tr><td><a href="Main.State.html#VALget_soundtrack">get_soundtrack</a> [<a href="Main.State.html">Main.State</a>]</td>
 <td><div class="info">
-Recupere la soundtrack de la donnee en construction.
+Récupère la soundtrack de la donnée en construction.
 </div>
 </td></tr>
 <tr><td><a href="Main.Data.html#VALget_soundtrack">get_soundtrack</a> [<a href="Main.Data.html">Main.Data</a>]</td>
 <td><div class="info">
-Recupere la soundtrack.
+Récupère la soundtrack.
 </div>
 </td></tr>
 <tr><td><a href="Main.Automaton.html#VALget_transition_on">get_transition_on</a> [<a href="Main.Automaton.html">Main.Automaton</a>]</td>
 <td><div class="info">
-Je ne sais pas pour le moment.
+Récupère la transition qui part d'un noeud donné pour un autre noeud, et qui satisfait le symbol donné en paramètre.
 </div>
 </td></tr>
 <tr><td align="left"><br>I</td></tr>
 <tr><td><a href="Main.Action.html#VALincrease_clock_by">increase_clock_by</a> [<a href="Main.Action.html">Main.Action</a>]</td>
 <td><div class="info">
-Cree l'action d'incrementation de l'horloge par rapport a une duree donnee.
+Crée l'action d'incrémentation de l'horloge par rapport à une durée donnée.
 </div>
 </td></tr>
 <tr><td><a href="Main.State.html#VALinitial">initial</a> [<a href="Main.State.html">Main.State</a>]</td>
@@ -162,7 +273,7 @@ Etat initial.
 </td></tr>
 <tr><td><a href="Main.Data.html#VALinitial">initial</a> [<a href="Main.Data.html">Main.Data</a>]</td>
 <td><div class="info">
-Initialise une variable data, clock a 0.0, sic a Nil et soundtrack a [].
+Initialise une variable data, clock à 0.0, sic à Nil et soundtrack à [].
 </div>
 </td></tr>
 <tr><td><a href="Main.Clock.html#VALinitial">initial</a> [<a href="Main.Clock.html">Main.Clock</a>]</td>
@@ -177,7 +288,7 @@ Noeud initial = 1
 </td></tr>
 <tr><td><a href="Main.SheetParser.html#VALinitialize">initialize</a> [<a href="Main.SheetParser.html">Main.SheetParser</a>]</td>
 <td><div class="info">
-Initialise une variable de type run, en initialisant la clock a son etat initial, la liste de processus est cree en utilisant la fonction initialize du module Process permettant d'initialiser un process a partir d'un automate, applique a la liste d'automates.
+Initialise une variable de type run, en initialisant la clock à son état initial, la liste de processus est créée en utilisant la fonction initialize du module Process permettant d'initialiser un process à partir d'un automate, appliqué à la liste d'automates.
 </div>
 </td></tr>
 <tr><td><a href="Main.Process.html#VALinitialize">initialize</a> [<a href="Main.Process.html">Main.Process</a>]</td>
@@ -187,61 +298,93 @@ Initialise un process avec un automate.
 </td></tr>
 <tr><td><a href="Main.html#VALinitialize">initialize</a> [<a href="Main.html">Main</a>]</td>
 <td><div class="info">
-<b>Imperatif : </b>Initialise le parser en utilisant la fonction initialise du module SheetParser.
+<b>Impératif : </b>Initialise le parser en utilisant la fonction initialise du module SheetParser.
 </div>
 </td></tr>
 <tr><td><a href="Main.Automaton.html#VALinstall">install</a> [<a href="Main.Automaton.html">Main.Automaton</a>]</td>
 <td><div class="info">
-Transforme une liste d'automates en une liste de couples (string * automaton) representant un automate associe a son nom.
+Transforme une liste d'automates en une liste de couples (string * automaton) représentant un automate associé à son nom.
+</div>
+</td></tr>
+<tr><td align="left"><br>K</td></tr>
+<tr><td><a href="Main.KaraokeMod.html#VALkaraoke">karaoke</a> [<a href="Main.KaraokeMod.html">Main.KaraokeMod</a>]</td>
+<td><div class="info">
+Fonction de "karaoke" qui lis une newsoundtrack list et l'affiche dans une fenêtre graphique avec la gestion du temps donné par le tempo.
+</div>
+</td></tr>
+<tr><td align="left"><br>L</td></tr>
+<tr><td><a href="Main.html#VALletter">letter</a> [<a href="Main.html">Main</a>]</td>
+<td><div class="info">
+Liste des caractères valables pour la lecture de la piste "Lyrics".
 </div>
 </td></tr>
 <tr><td align="left"><br>M</td></tr>
 <tr><td><a href="Main.Automaton.html#VALmake">make</a> [<a href="Main.Automaton.html">Main.Automaton</a>]</td>
 <td><div class="info">
-Cree un automate a partir d'une string (le nom de l'automate) et d'une liste de transitions.
+Crée un automate à partir d'une string (le nom de l'automate) et d'une liste de transitions.
+</div>
+</td></tr>
+<tr><td><a href="Main.Repeat.html#VALmakeRepeat">makeRepeat</a> [<a href="Main.Repeat.html">Main.Repeat</a>]</td>
+<td><div class="info">
+Extrait les données de répétitions d'une newSoundtrack list et les applique.
 </div>
 </td></tr>
 <tr><td><a href="Main.Action.html#VALmake_sound">make_sound</a> [<a href="Main.Action.html">Main.Action</a>]</td>
 <td><div class="info">
-Cree l'action qui cree un son a partir d'une string.
+Crée l'action qui crée un son à partir d'une string.
 </div>
 </td></tr>
 <tr><td><a href="Main.Pattern.html#VALmatches">matches</a> [<a href="Main.Pattern.html">Main.Pattern</a>]</td>
 <td><div class="info">
 Prend un pattern de type 'a et une variable de type 'a et renvoie :
-    Si pattern satisfait "ANY" -&gt; true.Si le pattern satisfait "KEY a" -&gt; a = a'.
+    Si pattern satisfait "ANY" -&gt; true.
 </div>
 </td></tr>
 <tr><td><a href="Main.html#VALmessage">message</a> [<a href="Main.html">Main</a>]</td>
 <td><div class="info">
-Affiche la string donnee en parametre sur la sortie standard si _DEBUG_ est vrai.
+Affiche la string donnée en paramètre sur la sortie standard si _DEBUG_ est vrai.
+</div>
+</td></tr>
+<tr><td><a href="Main.Sound.html#VALmodifySound">modifySound</a> [<a href="Main.Sound.html">Main.Sound</a>]</td>
+<td><div class="info">
+Modifie un son, en remplaçant un son donné en paramètre par un autre.
+</div>
+</td></tr>
+<tr><td><a href="Main.Sound.html#VALmodifyStringList">modifyStringList</a> [<a href="Main.Sound.html">Main.Sound</a>]</td>
+<td><div class="info">
+Remplace toutes les occurences d'une string donnée en paramètre par une autre string, dans une liste de string.
+</div>
+</td></tr>
+<tr><td><a href="Main.KaraokeMod.html#VALmysleep">mysleep</a> [<a href="Main.KaraokeMod.html">Main.KaraokeMod</a>]</td>
+<td><div class="info">
+Fonctions permettant d'arrêter l'exécution d'un code pendant une durée donnée en seconde (sous forme de float).
 </div>
 </td></tr>
 <tr><td align="left"><br>N</td></tr>
 <tr><td><a href="Main.Automaton.html#VALnamed">named</a> [<a href="Main.Automaton.html">Main.Automaton</a>]</td>
 <td><div class="info">
-Retourne l'automate associe a un nom donne en parametre, en faisant la recherche dans une liste de couple (nom * automate).
+Retourne l'automate associé à un nom donné en paramètre, en faisant la recherche dans une liste de couple (nom * automate).
 </div>
 </td></tr>
 <tr><td align="left"><br>O</td></tr>
 <tr><td><a href="Main.SheetParser.html#VALone_step">one_step</a> [<a href="Main.SheetParser.html">Main.SheetParser</a>]</td>
 <td><div class="info">
-Avance d'une etape dans chaque process si la sheet de la variable run passe en parametre n'est pas vide.
+Avance d'une étape dans chaque process si la sheet de la variable run passée en paramètre n'est pas vide.
 </div>
 </td></tr>
 <tr><td><a href="Main.html#VALone_step">one_step</a> [<a href="Main.html">Main</a>]</td>
 <td><div class="info">
-<b>Imperatif : </b>Avance d'un pas dans la lecture de la partition.
+<b>Impératif : </b>Avance d'un pas dans la lecture de la partition.
 </div>
 </td></tr>
 <tr><td><a href="Main.Process.html#VALone_step_each_process">one_step_each_process</a> [<a href="Main.Process.html">Main.Process</a>]</td>
 <td><div class="info">
-Avance d'un etat dans un ensemble de process.
+Avance d'un état dans un ensemble de process.
 </div>
 </td></tr>
 <tr><td><a href="Main.Process.html#VALone_step_on">one_step_on</a> [<a href="Main.Process.html">Main.Process</a>]</td>
 <td><div class="info">
-Avance d'un etat dans un process.
+Avance d'un état dans un process.
 </div>
 </td></tr>
 <tr><td align="left"><br>P</td></tr>
@@ -252,34 +395,59 @@ Transforme un pattern en une chaine de caractere suivant sa composition.
 </td></tr>
 <tr><td><a href="Main.Pattern.html#VALprint">print</a> [<a href="Main.Pattern.html">Main.Pattern</a>]</td>
 <td><div class="info">
-Affiche un pattern sur la sortie standard, suivant une fonction de conversion d'element de type 'a vers une chaine de caracteres.
+Affiche un pattern sur la sortie standard, suivant une fonction de conversion d'élément de type 'a vers une chaine de caractères.
+</div>
+</td></tr>
+<tr><td><a href="Main.KaraokeMod.html#VALprintCenterizedString">printCenterizedString</a> [<a href="Main.KaraokeMod.html">Main.KaraokeMod</a>]</td>
+<td><div class="info">
+Imprime dans une fenêtre graphique une string de façon centrée horizontalement et verticalement.
+</div>
+</td></tr>
+<tr><td><a href="Main.KaraokeMod.html#VALprintLegend">printLegend</a> [<a href="Main.KaraokeMod.html">Main.KaraokeMod</a>]</td>
+<td><div class="info">
+Fonction d'impression de la légende dans la fenêtre graphique.
 </div>
 </td></tr>
 <tr><td align="left"><br>R</td></tr>
+<tr><td><a href="Main.Repeat.html#VALrepeatFromTo">repeatFromTo</a> [<a href="Main.Repeat.html">Main.Repeat</a>]</td>
+<td><div class="info">
+Repète n fois une partie d'une newSoundtrack list.
+</div>
+</td></tr>
 <tr><td><a href="Main.html#VALrow_sheet">row_sheet</a> [<a href="Main.html">Main</a>]</td>
 <td><div class="info">
-Feuille de partition donnee par Mr Perin.
+Feuille de partition donnée par Mr Perin.
 </div>
 </td></tr>
 <tr><td align="left"><br>S</td></tr>
 <tr><td><a href="Main.MyList.html#VALsafe_zipper">safe_zipper</a> [<a href="Main.MyList.html">Main.MyList</a>]</td>
 <td><div class="info">
-Renvoie une liste de listes cree a partir d'une liste l1, et d'une liste de listes l2.
+Renvoie une liste de listes crée à partir d'une liste l1, et d'une liste de listes l2.
 </div>
 </td></tr>
 <tr><td><a href="Main.html#VALsheet">sheet</a> [<a href="Main.html">Main</a>]</td>
 <td><div class="info">
-Renvoie les 8 premiers elements de la liste representative de la partition lu a la verticale.
+Renvoie les 8 premiers éléments de la liste représentative de la partition lu à la verticale.
 </div>
 </td></tr>
 <tr><td><a href="Main.html#VALsheetparser">sheetparser</a> [<a href="Main.html">Main</a>]</td>
 <td><div class="info">
-Cree une variable de type run a partir d'une partition, tel que cette variable combine 6 processus correspondants a chaque lignes de la partition.
+Crée une variable de type run à partir d'une partition, tel que cette variable combine 6 processus correspondants a chaque lignes de la partition.
 </div>
 </td></tr>
 <tr><td><a href="Main.Clock.html#VALshift_by">shift_by</a> [<a href="Main.Clock.html">Main.Clock</a>]</td>
 <td><div class="info">
-Incremente une variable date d'une duree definit par duration.
+Incremente une variable date d'une durée définit par duration.
+</div>
+</td></tr>
+<tr><td><a href="Main.Repeat.html#VALsplitStartOrStop">splitStartOrStop</a> [<a href="Main.Repeat.html">Main.Repeat</a>]</td>
+<td><div class="info">
+Sépare les éléments qui contiennent une parole, un son joué à la batterie ou à la guitare, des données de répétitions.
+</div>
+</td></tr>
+<tr><td><a href="Main.KaraokeMod.html#VALsplitTimedSound">splitTimedSound</a> [<a href="Main.KaraokeMod.html">Main.KaraokeMod</a>]</td>
+<td><div class="info">
+Découpe une newSoundtrack list en trois sous listes représentant les paroles, la batterie et la guitare (ceci est fait grâce aux identificateurs).
 </div>
 </td></tr>
 <tr><td align="left"><br>T</td></tr>
@@ -290,45 +458,60 @@ Variable de test pour test_transpose.
 </td></tr>
 <tr><td><a href="Main.MyString.html#VALtest_transpose">test_transpose</a> [<a href="Main.MyString.html">Main.MyString</a>]</td>
 <td><div class="info">
-Transforme une chaine de caracteres ecrites sur plusieurs lignes en une nouvelle, telles que cette nouvelle chaine represente l'ancienne, mais lu a la verticale.
+Transforme une chaine de caractères écrites sur plusieurs lignes en une nouvelle, telles que cette nouvelle chaine represente l'ancienne, mais lu à la verticale.
 </div>
 </td></tr>
 <tr><td><a href="Main.MyString.html#VALto_char_list">to_char_list</a> [<a href="Main.MyString.html">Main.MyString</a>]</td>
 <td></td></tr>
 <tr><td><a href="Main.MyString.html#VALto_line_list">to_line_list</a> [<a href="Main.MyString.html">Main.MyString</a>]</td>
 <td></td></tr>
+<tr><td><a href="Main.SyncSound.html#VALto_new_soundtrack">to_new_soundtrack</a> [<a href="Main.SyncSound.html">Main.SyncSound</a>]</td>
+<td><div class="info">
+Convertit une liste de soundtrack basique en une liste de newSoundtrack.
+</div>
+</td></tr>
+<tr><td><a href="Main.MyString.html#VALto_string_list">to_string_list</a> [<a href="Main.MyString.html">Main.MyString</a>]</td>
+<td><div class="info">
+Permet de lire les caractères "1o" et "1@" utilisés dans le parser du tempo (12/20).
+</div>
+</td></tr>
 <tr><td><a href="Main.MyString.html#VALtranspose">transpose</a> [<a href="Main.MyString.html">Main.MyString</a>]</td>
 <td></td></tr>
+<tr><td><a href="Main.MyString.html#VALtransposeStr">transposeStr</a> [<a href="Main.MyString.html">Main.MyString</a>]</td>
+<td><div class="info">
+Transpose une liste de liste de string.
+</div>
+</td></tr>
 <tr><td align="left"><br>U</td></tr>
 <tr><td><a href="Main.State.html#VALupdate">update</a> [<a href="Main.State.html">Main.State</a>]</td>
 <td><div class="info">
-Met a jour un etat, en mettant a jour le noeud courrant (le nouveau noeud courrant est donne dans les parametres de la fonction) ainsi que la donnee en construction avec une sequence d'actions a faire.
+Met à jour un état, en mettant à jour le noeud courrant (le nouveau noeud courrant est donné dans les paramètres de la fonction) ainsi que la donnée en construction avec une sequence d'actions à faire.
 </div>
 </td></tr>
 <tr><td><a href="Main.Process.html#VALupdate_clock">update_clock</a> [<a href="Main.Process.html">Main.Process</a>]</td>
 <td><div class="info">
-Met a jour l'horloge du process (a travers la mise a jour de l'horloge de l'etat).
+Met à jour l'horloge du process (à travers la mise à jour de l'horloge de l'état).
 </div>
 </td></tr>
 <tr><td><a href="Main.State.html#VALupdate_clock">update_clock</a> [<a href="Main.State.html">Main.State</a>]</td>
 <td><div class="info">
-Met a jour l'horloge de la donnee en construction.
+Met à jour l'horloge de la donnée en construction.
 </div>
 </td></tr>
 <tr><td><a href="Main.Action.html#VALupdate_clock">update_clock</a> [<a href="Main.Action.html">Main.Action</a>]</td>
 <td><div class="info">
-Cree l'action qui met a jour l'horloge avec une autre horloge donnee en parametre.
+Crée l'action qui met à jour l'horloge avec une autre horloge donnée en paramètre.
 </div>
 </td></tr>
 <tr><td><a href="Main.Data.html#VALupdate_clock">update_clock</a> [<a href="Main.Data.html">Main.Data</a>]</td>
 <td><div class="info">
-Met a jour l'horloge en attribuant a l'horloge d'une variable data, la valeur d'une clock passee en parametre.
+Met à jour l'horloge en attribuant à l'horloge d'une variable data, la valeur d'une clock passée en paramètre.
 </div>
 </td></tr>
 <tr><td align="left"><br>Z</td></tr>
 <tr><td><a href="Main.MyList.html#VALzip_with">zip_with</a> [<a href="Main.MyList.html">Main.MyList</a>]</td>
 <td><div class="info">
-Cree une liste de liste a partir d'un zipper.
+Crée une liste de liste à partir d'un zipper.
 </div>
 </td></tr>
 </table>

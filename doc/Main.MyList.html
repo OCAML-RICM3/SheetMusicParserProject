@@ -2,7 +2,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="style.css" type="text/css">
-<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 <link rel="Start" href="index.html">
 <link rel="next" href="Main.MyString.html">
 <link rel="Up" href="Main.html">
@@ -23,24 +23,24 @@ Module de modification de liste et de liste de listes.<br>
 <hr width="100%">
 
 <pre><span id="VALfirst"><span class="keyword">val</span> first</span> : <code class="type">int -> 't list -> 't list</code></pre><div class="info ">
-Renvoie les n premiers elements d'une liste. n donne en parametre<br>
+Renvoie les n premiers éléments d'une liste. n donné en paramètre<br>
 </div>
 
 <pre><span id="VALsafe_zipper"><span class="keyword">val</span> safe_zipper</span> : <code class="type">'t -> 't list -> 't list list -> 't list list</code></pre><div class="info ">
-Renvoie une liste de listes cree a partir d'une liste l1, et d'une liste de listes l2. On prend l'element n de l1 que l'on concatene a la liste n de l2 si elle existe, sinon a []. Quand il n'y a plus d'elements dans l1, on concatene ce qu'il reste de l2 en queue.<br>
+Renvoie une liste de listes crée à partir d'une liste l1, et d'une liste de listes l2. On prend l'élément n de l1 que l'on concatène à la liste n de l2 si elle existe, sinon à []. Quand il n'y a plus d'éléments dans l1, on concatène ce qu'il reste de l2 en queue.<br>
 </div>
 
 <pre><span id="TYPEzipper"><span class="keyword">type</span> <code class="type">'t</code> zipper</span> = <code class="type">'t list -> 't list list -> 't list list</code> </pre>
 <div class="info ">
-Definit l'ensemble des fonctions qui a une liste et une liste de listes, associe une liste de liste.<br>
+Définit l'ensemble des fonctions qui à une liste et une liste de listes, associe une liste de liste.<br>
 </div>
 
 
 <pre><span id="VALzip_with"><span class="keyword">val</span> zip_with</span> : <code class="type">'t <a href="Main.MyList.html#TYPEzipper">zipper</a> -> 't list list -> 't list list</code></pre><div class="info ">
-Cree une liste de liste a partir d'un zipper. Le zipper est une fonction qui prend en entree une liste et une liste de liste et renvoie une liste de liste.<br>
+Crée une liste de liste à partir d'un zipper. Le zipper est une fonction qui prend en entrée une liste et une liste de liste et renvoie une liste de liste.<br>
 </div>
 
 <pre><span id="VALforeach"><span class="keyword">val</span> foreach</span> : <code class="type">'x list -> ('x -> 'y list) -> 'y list</code></pre><div class="info ">
-Cree une liste d'elements de type 'y a partir d'une liste d'elements de type 'x, et d'une fonction de conversion transformant un x en une liste de 'y.<br>
+Crée une liste d'elements de type 'y à partir d'une liste d'éléments de type 'x, et d'une fonction de conversion transformant un x en une liste de 'y.<br>
 </div>
 </body></html>

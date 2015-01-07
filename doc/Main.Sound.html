@@ -2,7 +2,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="style.css" type="text/css">
-<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 <link rel="Start" href="index.html">
 <link rel="previous" href="Main.Clock.html">
 <link rel="next" href="Main.Data.html">
@@ -20,15 +20,27 @@
 <h1>Module <a href="type_Main.Sound.html">Main.Sound</a></h1>
 
 <pre><span class="keyword">module</span> Sound: <code class="code">sig</code> <a href="Main.Sound.html">..</a> <code class="code">end</code></pre><div class="info module top">
-Module d'operations sur le type sic.<br>
+Module d'opérations sur le type sic.<br>
 </div>
 <hr width="100%">
 
 <pre><span id="VALfinalize"><span class="keyword">val</span> finalize</span> : <code class="type"><a href="Main.html#TYPEsic">Main.sic</a> -> <a href="Main.html#TYPEsoundtrack">Main.soundtrack</a></code></pre><div class="info ">
-Cree une soundtrack a partir d'un son en construction. Si le son est nul, on renvoie [] sinon on renvoie une liste composee d'un timed_sound. Ce timed_sound est lui-meme compose de la clock du SIC, et de la string resultante de la concatenation de la liste de string du SIC.<br>
+Crée une soundtrack à partir d'un son en construction. Si le son est nul, on renvoie [] sinon on renvoie une liste composée d'un timed_sound. Ce timed_sound est lui-même composé de la clock du SIC, et de la string résultante de la concaténation de la liste de string du SIC.<br>
 </div>
 
 <pre><span id="VALextend_with"><span class="keyword">val</span> extend_with</span> : <code class="type">string -> <a href="Main.html#TYPEclock">Main.clock</a> -> <a href="Main.html#TYPEsic">Main.sic</a> -> <a href="Main.html#TYPEsic">Main.sic</a></code></pre><div class="info ">
-Etend un son en construction avec une nouvelle string. S'il est nul, on cree un couple avec la clock et la string passees en parametre, sinon on concatene la string en tete de la liste de string, du couple (clock * string list).<br>
+Etend un son en construction avec une nouvelle string. S'il est nul, on crée un couple avec la clock et la string passées en paramètre, sinon on concatène la string en tête de la liste de string, du couple (clock * string list).<br>
+</div>
+
+<pre><span id="VALextend_with_tail"><span class="keyword">val</span> extend_with_tail</span> : <code class="type">string -> <a href="Main.html#TYPEclock">Main.clock</a> -> <a href="Main.html#TYPEsic">Main.sic</a> -> <a href="Main.html#TYPEsic">Main.sic</a></code></pre><div class="info ">
+Même fonctionnalités que extend_with, mais l'ajout se fait ici en queue.<br>
+</div>
+
+<pre><span id="VALmodifyStringList"><span class="keyword">val</span> modifyStringList</span> : <code class="type">string -> string -> string list -> string list</code></pre><div class="info ">
+Remplace toutes les occurences d'une string donnée en paramètre par une autre string, dans une liste de string.<br>
+</div>
+
+<pre><span id="VALmodifySound"><span class="keyword">val</span> modifySound</span> : <code class="type">string -> string -> <a href="Main.html#TYPEsic">Main.sic</a> -> <a href="Main.html#TYPEsic">Main.sic</a></code></pre><div class="info ">
+Modifie un son, en remplaçant un son donné en paramètre par un autre.<br>
 </div>
 </body></html>

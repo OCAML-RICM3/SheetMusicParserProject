@@ -2,7 +2,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="style.css" type="text/css">
-<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 <link rel="Start" href="index.html">
 <link rel="previous" href="Main.Action.html">
 <link rel="next" href="Main.State.html">
@@ -20,7 +20,7 @@
 <h1>Module <a href="type_Main.Automaton.html">Main.Automaton</a></h1>
 
 <pre><span class="keyword">module</span> Automaton: <code class="code">sig</code> <a href="Main.Automaton.html">..</a> <code class="code">end</code></pre><div class="info module top">
-Module d'operations sur les automates.<br>
+Module d'opérations sur les automates.<br>
 </div>
 <hr width="100%">
 
@@ -29,18 +29,18 @@ Noeud initial = 1<br>
 </div>
 
 <pre><span id="VALmake"><span class="keyword">val</span> make</span> : <code class="type">string -> <a href="Main.html#TYPEtransition">Main.transition</a> list -> <a href="Main.html#TYPEautomaton">Main.automaton</a></code></pre><div class="info ">
-Cree un automate a partir d'une string (le nom de l'automate) et d'une liste de transitions.<br>
+Crée un automate à partir d'une string (le nom de l'automate) et d'une liste de transitions.<br>
 </div>
 
 <pre><span id="VALget_transition_on"><span class="keyword">val</span> get_transition_on</span> : <code class="type"><a href="Main.html#TYPEsymbol">Main.symbol</a> -> <a href="Main.html#TYPEautomaton">Main.automaton</a> -> <a href="Main.html#TYPEnode">Main.node</a> -> <a href="Main.html#TYPEtransition">Main.transition</a> option</code></pre><div class="info ">
-Je ne sais pas pour le moment.<br>
+Récupère la transition qui part d'un noeud donné pour un autre noeud, et qui satisfait le symbol donné en paramètre.<br>
 </div>
 
 <pre><span id="VALinstall"><span class="keyword">val</span> install</span> : <code class="type"><a href="Main.html#TYPEautomaton">Main.automaton</a> list -> (string * <a href="Main.html#TYPEautomaton">Main.automaton</a>) list</code></pre><div class="info ">
-Transforme une liste d'automates en une liste de couples (string * automaton) representant un automate associe a son nom.<br>
+Transforme une liste d'automates en une liste de couples (string * automaton) représentant un automate associé à son nom.<br>
 </div>
 
 <pre><span id="VALnamed"><span class="keyword">val</span> named</span> : <code class="type">string -> (string * <a href="Main.html#TYPEautomaton">Main.automaton</a>) list -> <a href="Main.html#TYPEautomaton">Main.automaton</a></code></pre><div class="info ">
-Retourne l'automate associe a un nom donne en parametre, en faisant la recherche dans une liste de couple (nom * automate). Pour plus d'informations, consulter la doc de List sur http://caml.inria.fr/pub/docs/manual-ocaml/libref/List.html et plus particulièrement la fonction assoc de ce module.<br>
+Retourne l'automate associé à un nom donné en paramètre, en faisant la recherche dans une liste de couple (nom * automate). Pour plus d'informations, consulter la doc de List sur http://caml.inria.fr/pub/docs/manual-ocaml/libref/List.html et plus particulièrement la fonction assoc de ce module.<br>
 </div>
 </body></html>
