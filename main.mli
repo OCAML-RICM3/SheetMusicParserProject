@@ -245,7 +245,7 @@ val adrum : automaton
 (** Automate de parsing de la guitare. Automate à 1 état.*)
 val aguitar : automaton
 
-(** Liste des automates adef, atempo et adrum associés à leur noms respectifs.*)
+(** Liste des automates adef, atempo, averbose, adrum et aguitar associés à leur noms respectifs.*)
 val _AUTOMATA_ : (string * automaton) list
 
 (** Définition du type state. Un état est définit par le noeud courrant et par la donnée du son en construction.*)
